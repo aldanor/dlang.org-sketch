@@ -1,0 +1,72 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300,400);
+
+@import "variables.less";
+
+html {
+  color: @gray-dark !important;
+}
+
+a.follow-button.profile {
+    font-weight: normal;
+    background-color: rgb(239, 239, 239);
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(237, 237, 237));
+    box-shadow: rgba(0, 0, 0, 0.0180392) 0px 3px 5px 0px inset;
+}
+
+a.customisable-highlight {
+    font-weight: 300;
+}
+
+h1.summary {
+    font-size: @font-size-base;
+}
+
+.root.timeline.twitter-timeline {
+    background-color: @white;
+}
+
+.root.timeline.twitter-timeline p,
+.root.timeline.twitter-timeline a,
+.root.timeline.twitter-timeline ol,
+.root.timeline.twitter-timeline ul,
+.root.timeline.twitter-timeline li {
+    font-family: @font-family-sans-serif;
+}
+
+.root.twitter-timeline .tweet {
+    padding: 7px 10px;
+    border-bottom: 1px solid darken(@white, 6%);
+}
+
+.root.twitter-timeline a,
+.root.twitter-timeline a:visited {
+    text-decoration: underline;
+}
+
+.root.twitter-timeline .u-url,
+.root.twitter-timeline .expand,
+.root.twitter-timeline .hashtag,
+.root.twitter-timeline .profile {
+    text-decoration: none;
+}
+
+.root.twitter-timeline .a:hover,
+.root.twitter-timeline .u-url:hover,
+.root.twitter-timeline .expand:hover,
+.root.twitter-timeline .hashtag:hover,
+.root.twitter-timeline .profile:hover {
+    text-decoration: underline;
+    color: @link-hover-color !important;
+}
+
+a.u-url.profile {
+    font-weight: 300;
+}
+
+span.p-name.customisable-highlight {
+    font-weight: normal !important;
+}
+
+.timeline-footer {
+    display: none !important;
+}

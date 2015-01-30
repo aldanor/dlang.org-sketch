@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>The D Programming Language</title>
+    <link href="/img/favicon32x32.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/customize-twitter-1.1.min.js" type="text/javascript"></script>
+    <script src="js/codemirror.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    <script src="js/script.js"></script>
+    <script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dlang navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo.svg" id="d-logo">
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Learn</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Documentation <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Language Reference</a>
+                            </li>
+                            <li><a href="#">Standard Library</a>
+                            </li>
+                            <li><a href="#">Code Style Guide</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Downloads</a>
+                    </li>
+                    <li><a href="#">Packages</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Community <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Forums</a>
+                            </li>
+                            <li><a href="#">GitHub</a>
+                            </li>
+                            <li><a href="#">Wiki</a>
+                            </li>
+                            <li><a href="#">Review Queue</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">About</a>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-right hidden-sm">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" id="search" placeholder="Search" />
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+            </div>
+
+        </div>
+        </div>
+    </nav>
+
+    <ol class="breadcrumb">
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Standard Library</a></li>
+        <li class="active"><code>std.array</code></li>
+    </ol>
+
+    <div id="ForeachType" class="well doc-popup">
+        <h5 class="doc-header"><code><a href="#">std.traits.ForeachType</a></code></h5>
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    alias <span class="doc-name">ForeachType</span>(T) = ReturnType!(typeof((inoutintx=0){foreach(elem;T.init){returnelem;}assert(0);}));
+                </div>
+            </div>
+            <div class="doc-summary">
+                Returns the inferred type of the loop variable when a variable of type <code>T</code> is iterated over using a foreach loop with a single loop variable and automatically inferred return type. Note that this may not be the same as <code>std.range</code>.<code>ElementType!Range</code> in the case of narrow strings, or if <code>T</code> has both <code>opApply</code> and a range interface.
+            </div>
+        </div>
+    </div>
+
+    <div id="ElementType" class="well doc-popup">
+        <h5 class="doc-header"><code><a href="#">std.range.ElementType</a></code></h5>
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    template <span class="doc-name">ElementType</span>(T)
+                </div>
+            </div>
+            <div class="doc-summary">
+                The element type of <code>R</code>. <code>R</code> does not have to be a range. The element type is determined as the type yielded by <code>r.front</code> for an object <code>r</code> of type <code>R</code>. For example, <code>ElementType!(T[])</code> is <code>T</code> if <code>T[]</code> isn't a narrow string; if it is, the element type is <code>dchar</code>. If <code>R</code> doesn't have <code>front</code>, <code>ElementType!R</code> is <code>void</code>.
+
+                <div class="doc-detail">
+                    <h5>Examples:</h5>
+
+                    <pre class="d_code notranslate"><span class="d_comment">// Standard arrays: returns the type of the elements of the array
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_psymbol">ElementType</span>!(<span class="d_keyword">int</span>[]) == <span class="d_keyword">int</span>));
+
+<span class="d_comment">// Accessing .front retrieves the decoded dchar
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_psymbol">ElementType</span>!(<span class="d_keyword">char</span>[])  == <span class="d_keyword">dchar</span>)); <span class="d_comment">// rvalue
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_psymbol">ElementType</span>!(<span class="d_keyword">dchar</span>[]) == <span class="d_keyword">dchar</span>)); <span class="d_comment">// lvalue
+</span>
+<span class="d_comment">// Ditto
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_psymbol">ElementType</span>!(string) == <span class="d_keyword">dchar</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_psymbol">ElementType</span>!(dstring) == <span class="d_keyword">immutable</span>(<span class="d_keyword">dchar</span>)));
+
+<span class="d_comment">// For ranges it gets the type of .front.
+</span><span class="d_keyword">auto</span> range = iota(0, 10);
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_psymbol">ElementType</span>!(<span class="d_keyword">typeof</span>(range)) == <span class="d_keyword">int</span>));
+</pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="isIterable" class="well doc-popup">
+        <h5 class="doc-header"><code><a href="#">std.traits.isIterable</a></code></h5>
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    enum bool <span class="doc-name">isIterable</span>(T) = is(typeof({ foreach(elem; T.init) {} }));
+                </div>
+            </div>
+            <div class="doc-summary">
+                Returns <code>true</code> if <code>T</code> can be iterated over using a <code>foreach</code> loop with a single loop variable of automatically inferred type, regardless of how the <code>foreach</code> loop is implemented. This includes ranges, structs/classes that define <code>opApply</code> with a single loop variable, and builtin dynamic, static and associative arrays.
+            </div>
+        </div>
+    </div>
+
+    <div id="isInfinite" class="well doc-popup">
+        <h5 class="doc-header"><code><a href="#">std.range.isInfinite</a></code></h5>
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    template <span class="doc-name">isInfinite</span>(R)
+                </div>
+            </div>
+            <div class="doc-summary">
+                Returns <code>true</code> if <code>R</code> is an infinite input range.
+                <div class="doc-detail">
+                    An infinite input range is an input range that has a statically-defined enumerated member called <code>empty</code> that is always <code>false</code>, for example:
+                    <pre class="d_code notranslate"><span class="d_keyword">struct</span> MyInfiniteRange
+{
+    <span class="d_keyword">enum</span> <span class="d_keyword">bool</span> empty = <span class="d_keyword">false</span>;
+    ...
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="isNarrowString" class="well doc-popup">
+        <h5 class="doc-header"><code><a href="#">std.traits.isNarrowString</a></code></h5>
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    enum bool <span class="doc-name">isNarrowString</span>>(T) = (is(T : const char[]) || is(T : const wchar[])) &amp;&amp; !isAggregateType!T &amp;&amp; !isStaticArray!T;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container doc-container">
+        <div class="doc-top-header">
+            <h4><code><a href="#">std.array</a></code></h4>
+        </div>
+        <div class="doc-entry">
+            <div class="doc-declaration">
+
+                <div class="doc-signature">
+                    <a href="#" id="array-1-toggle" data-toggle="collapse" data-target="#array-1" href="#array-1" aria-expanded="false" aria-controls="array-1"><i class="fa fa-plus doc-toggle"></i></a>
+                    <a href="#" data-target="#ForeachType" class="doc-crossref">ForeachType</a>!Range[] <span class="doc-name">array</span>(Range)(Range <span class="doc-variable">r</span>)
+                </div>
+                <div class="doc-constraint">
+                    if (<a href="#" class="doc-crossref" data-target="#isIterable">isIterable</a>!Range &amp;&amp; !<a href="#" class="doc-crossref" data-target="#isNarrowString">isNarrowString</a>!Range &amp;&amp; !<a href="#" class="doc-crossref" data-target="#isInfinite">isInfinite</a>!Range)
+                </div>
+            </div>
+            <div class="doc-summary collapse-group">
+                Returns a newly-allocated dynamic array consisting of a copy of the input range, static array, dynamic array, or class or struct with an <code>opApply</code> function <code>r</code>. Note that narrow strings are handled as a special case in an overload.
+                <div class="doc-detail collapse" id="array-1">
+                    <h5>Examples</h5>
+                    <pre class="d_code notranslate"><span class="d_keyword">auto</span> a = <span class="d_psymbol">array</span>([1, 2, 3, 4, 5][]);
+<span class="d_keyword">assert</span>(a == [ 1, 2, 3, 4, 5 ]);
+</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    <a href="#" class="doc-crossref" data-target="#ElementType">ElementType</a>!String[] <span class="doc-name">array</span>(String)(String str)
+                </div>
+                <div class="doc-constraint">
+                    if (<a href="#" class="doc-crossref" data-target="#isNarrowString">isNarrowString</a>!String)
+                </div>
+            </div>
+            <div class="doc-summary">
+                Convert a narrow string to an array type that fully supports random access. This is handled as a special case and always returns a <code>dchar[]</code>, <code>const(dchar)[]</code>, or <code>immutable(dchar)[]</code> depending on the constness of the input.
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

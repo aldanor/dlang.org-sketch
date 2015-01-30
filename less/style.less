@@ -1,0 +1,404 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Droid+Sans+Mono|Source+Code+Pro:300,400,500,600,700);
+
+@import "../bower_components/font-awesome/less/font-awesome.less";
+@fa-font-path: "../fonts";
+
+[class^="icon-"],
+[class*="icon-"] {
+    background: none;
+}
+
+@import "../bower_components/bootstrap/less/bootstrap.less";
+
+@import "variables.less";
+@import "twitter.less";
+
+@font-family-serif:                     Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:                 "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:                      @font-family-sans-serif;
+
+@component-active-color:                #fff;
+@component-active-bg:                   @brand-primary;
+
+@input-border-focus:                    @brand-primary;
+
+@navbar-height:                         40px;
+@navbar-inverse-bg:                     @d-red;
+@navbar-inverse-color:                  lighten(@gray-light, 30%);
+@navbar-inverse-border:                 darken(@navbar-inverse-bg, 7%);
+@navbar-inverse-link-color:             darken(@white, 8%);
+@navbar-inverse-link-hover-color:       @white;
+@navbar-inverse-link-hover-bg:          darken(@navbar-inverse-bg, 3%);
+@navbar-inverse-link-active-color:      @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:         darken(@navbar-inverse-bg, 6%);
+@navbar-inverse-link-disabled-color:    #444;
+@navbar-inverse-link-disabled-bg:       transparent;
+@navbar-inverse-brand-color:            @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:      #fff;
+@navbar-inverse-brand-hover-bg:         transparent;
+@navbar-inverse-toggle-hover-bg:        #333;
+@navbar-inverse-toggle-icon-bar-bg:     #fff;
+
+@dropdown-bg:                           @d-red;
+@dropdown-border:                       @navbar-inverse-border;
+@dropdown-fallback-border:              @navbar-inverse-border;
+@dropdown-divider-bg:                   #e5e5e5;
+@dropdown-link-color:                   @navbar-inverse-link-color;
+@dropdown-link-hover-color:             @navbar-inverse-link-hover-color;
+@dropdown-link-hover-bg:                @navbar-inverse-link-hover-bg;
+@dropdown-link-active-color:            @component-active-color;
+@dropdown-link-active-bg:               @component-active-bg;
+@dropdown-link-disabled-color:          @gray-light;
+@dropdown-header-color:                 @gray-light;
+
+ul.dub-list {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+ul.dub-list li {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+ul.dub-list li h6 {
+    font-size: @font-size-base - 2px;
+}
+
+ul.dub-list li p {
+    font-size: @font-size-base - 2px;
+    line-height: 1.25;
+}
+
+div.dub-panel-body {
+    padding: 0px;
+}
+
+i.big-icon {
+    color: @d-red;
+    padding-right: 5px;
+}
+
+i.inline-icon {
+    padding-right: 3px;
+}
+
+
+// the SVG D brand logo in the navbar
+img#d-logo {
+    margin-top: -9px;
+    margin-left: -15px;
+    height: @navbar-height;
+}
+
+.intro {
+    padding-top: 15px;
+    background: darken(@white, 4%);
+    border-color: darken(@white, 10%);
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 15px;
+}
+
+// fix Safari 7.0 bug
+.navbar-fixed-top {
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.navbar-inverse {
+    font-size: @font-size-base - 1;
+}
+
+.dropdown-menu li {
+    font-size: @font-size-base - 2;
+}
+
+.intro-pitch {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    font-weight: 300;
+    font-size: @font-size-base * 1.2;
+    max-width: 455px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.fork-me {
+    position: absolute;
+    top: @navbar-height + 1px;
+    right: 0;
+    border: 0;
+    z-index: 100;
+}
+
+.install-notes {
+    padding: 5px;
+    font-size: @font-size-base - 4px;
+    color: darken(@white, 50%);
+}
+
+// offset by the navbar height
+body {
+    padding-top: @navbar-height + 1px;
+}
+
+.intro pre.d_code {
+    max-width: 455px;
+}
+
+pre.d_code {
+    background: @white;
+    font-size: @font-size-base - 4;
+    line-height: 1.25;
+}
+
+
+pre .d_comment {
+    color: rgb(153, 153, 136);
+}
+
+pre .d_keyword {
+    color: rgb(64, 64, 220);
+}
+
+pre .d_string {
+    color: rgb(220, 64, 64);
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    font-size: @font-size-base - 1px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: @brand-primary;
+}
+.bs-callout-primary h4 {
+    // color: @brand-primary;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+.d_decl {
+    font-size: @font-size-base;
+}
+
+.func-def {
+    font-family: @font-family-monospace;
+    font-weight: normal;
+    font-size: @font-size-base - 0px;
+}
+
+.func-constraint {
+    font-family: @font-family-monospace;
+    color: #666;
+    font-size: @font-size-base - 3px;
+}
+
+.ddoc_psymbol {
+    color: @d-red;
+    text-decoration: underline;
+}
+
+.func-doc {
+    padding-top: 15px;
+}
+
+hr.func-hr {
+    margin: 5px;
+}
+
+.d_inlinecode {
+    font-family: @font-family-monospace;
+}
+
+pre.d_code.d_code_doc {
+    font-size: @font-size-base - 2px;
+}
+
+.meta-type {
+    color: darken(@brand-success, 15%);
+}
+
+.d_keyword {
+    color: rgb(64, 64, 220);
+}
+
+.d_string {
+    color: rgb(220, 64, 64);
+}
+
+.bs-callout-doc {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    font-size: @font-size-base - 1px;
+    border-left-color: @d-red;
+}
+
+ol.breadcrumb li.active code {
+    color: @gray-light;
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+.doc-container {
+    // padding-top: 15px;
+}
+
+.doc-entry {
+    margin: 15px 0px;
+}
+
+.doc-entry .doc-declaration {
+    border: 1px solid #ddd;
+    padding: 7px 15px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-left-width: 4px;
+    border-left-color: @d-red;
+    font-family: @font-family-monospace;
+    background-color: #fafafa;
+}
+
+.doc-entry .doc-declaration .doc-signature {
+    font-size: @font-size-base - 0px;
+}
+
+.doc-entry .doc-declaration .doc-constraint {
+    border-top: 1px solid #eee;
+    padding-top: 4px;
+    margin-top: 4px;
+    font-size: @font-size-base - 3px;
+    color: #888;
+    padding-left: 30px;
+}
+
+.doc-entry .doc-declaration .doc-constraint a {
+    color: #888;
+}
+
+.doc-entry .doc-declaration .doc-constraint a:hover {
+    color: @d-red;
+}
+
+.doc-entry .doc-name {
+    color: @d-red;
+    font-weight: 600;
+}
+
+.doc-entry .doc-summary {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-top-width: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+a.doc-crossref {
+    color: @text-color;
+    outline: none;
+}
+
+a.doc-crossref:hover {
+    color: @link-color;
+    border-bottom: 1px solid @link-color;
+    text-decoration: none;
+}
+
+.doc-popup {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: none;
+    margin: 4px;
+    padding: 15px;
+    max-width: 800px;
+}
+
+.doc-popup .doc-entry {
+    margin: 5px 0px;
+}
+
+.doc-popup .doc-declaration {
+    margin-top: 20px;
+}
+
+.doc-popup .doc-header {
+    text-decoration: underline;
+}
+
+i.doc-toggle {
+    color: #aaa;
+}
+
+.doc-entry pre.d_code {
+    background-color: #fff;
+    font-size: @font-size-base - 2px;
+}
+
+.doc-entry .doc-detail {
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.doc-top-header {
+    padding-bottom: 0px;
+    border-bottom: 2px solid @d-red;
+    margin-bottom: 20px;
+}
+
+.doc-top-header h4 {
+    margin-bottom: 4px;
+}
+
+.doc-variable {
+}

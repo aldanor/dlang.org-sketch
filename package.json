@@ -1,0 +1,29 @@
+{
+    "name": "dlang.org",
+    "version": "0.0.1",
+    "description": "dlang.org website",
+    "private": true,
+    "author":
+    {
+        "name": "Ivan Smirnov",
+        "email": "i.s.smirnov@gmail.com"
+    },
+    "engines":
+    {
+        "node": ">=0.10",
+        "npm": ">=2.1"
+    },
+    "dependencies":
+    {
+        "grunt": ">=0.4",
+        "grunt-coffeelint": "*",
+        "grunt-usemin": "*",
+        "grunt-contrib-coffee": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-copy": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-bower-concat": "*"
+    }
+}
