@@ -79,10 +79,9 @@ module.exports = (grunt) ->
                     * <%= pkg.name %>
                     * <%= grunt.template.today("yyyy-mm-dd") %>
                     */"""
-                mangle: false
+                mangle: true
                 compress:
                     drop_console: true
-                beautify: true
             dev:
                 options:
                     beautify: true
