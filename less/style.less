@@ -294,12 +294,14 @@ ol.breadcrumb li.active code {
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
+@doc-h-padding: 20px;
+
 .doc-container {
     // padding-top: 15px;
 }
 
 .doc-entry {
-    margin: 15px 0px;
+    margin: @doc-h-padding 0px;
 
     // because Safari is stupid...
     -webkit-backface-visibility: hidden;
@@ -311,7 +313,7 @@ ol.breadcrumb li.active code {
 
 .doc-entry .doc-declaration {
     border: 1px solid #ddd;
-    padding: 6px 15px;
+    padding: 6px @doc-h-padding;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-left-width: 4px;
@@ -321,8 +323,8 @@ ol.breadcrumb li.active code {
 }
 
 .doc-entry .doc-declaration:hover {
-    background-color: #f3f3f3;
-    cursor: pointer;
+    // background-color: #f3f3f3;
+    // cursor: pointer;
 }
 
 .doc-entry .doc-declaration .doc-toolbar {
@@ -348,7 +350,7 @@ ol.breadcrumb li.active code {
     margin-top: 4px;
     font-size: @font-size-base - 3px;
     color: #888;
-    padding-left: 30px;
+    padding-left: @doc-h-padding + 15px;
 }
 
 .doc-entry .doc-declaration .doc-constraint a {
@@ -367,7 +369,7 @@ ol.breadcrumb li.active code {
 
 .doc-entry .doc-summary {
     border: 1px solid #ddd;
-    padding: 7px 15px;
+    padding: 7px @doc-h-padding;
     border-top-width: 0px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -406,7 +408,28 @@ span.doc-crossref:hover {
 }
 
 i.doc-toggle {
+    font-size: 160%;
     color: #aaa;
+    position: absolute;
+    left: 7px;
+    top: 5px;
+
+    // -webkit-transition-duration: 0.3s;
+    // -moz-transition-duration: 0.3s;
+    // -o-transition-duration: 0.3s;
+    // transition-duration: 0.3s;
+
+    // -webkit-transition-property: -webkit-transform;
+    // -moz-transition-property: -moz-transform;
+    // -o-transition-property: -o-transform;
+    // transition-property: transform;
+
+    // overflow:hidden;
+}
+
+i.doc-toggle:hover {
+    color: @d-red;
+
 }
 
 .doc-entry pre.d_code {

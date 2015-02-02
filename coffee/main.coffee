@@ -29,6 +29,20 @@ $ ->
     initializeDocPopups()
     intializeTwitterWidget()
 
+    $('.doc-toggle').each ->
+        el = $(this)
+        el.click ->
+            console.log el
+            console.log el.parent()
+            console.log el.parent().hasClass 'collapsed'
+            if el.parent().hasClass 'collapsed'
+                el.removeClass 'fa-caret-right'
+                el.addClass 'fa-caret-down'
+            else
+                el.removeClass 'fa-caret-down'
+                el.addClass 'fa-caret-right'
+
+
 
 # $(document).ready(function() {
 #   $('#example-type-inference').on('show', function() {
