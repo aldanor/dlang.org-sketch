@@ -51,6 +51,9 @@
 @dropdown-link-disabled-color:          @gray-light;
 @dropdown-header-color:                 @gray-light;
 
+@dl-horizontal-offset:                  120px;
+
+
 ul.dub-list {
     margin-left: 0px;
     margin-right: 0px;
@@ -297,17 +300,42 @@ ol.breadcrumb li.active code {
 
 .doc-entry {
     margin: 15px 0px;
+
+    // because Safari is stupid...
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(1px) translate3d(0, 0, 0);
+    -moz-transform: perspective(1px) translate3d(0, 0, 0);
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .doc-entry .doc-declaration {
     border: 1px solid #ddd;
-    padding: 7px 15px;
+    padding: 6px 15px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-left-width: 4px;
     border-left-color: @d-red;
     font-family: @font-family-monospace;
     background-color: #fafafa;
+}
+
+.doc-entry .doc-declaration:hover {
+    background-color: #f3f3f3;
+    cursor: pointer;
+}
+
+.doc-entry .doc-declaration .doc-toolbar {
+    float: right;
+}
+
+.doc-toolbar i {
+    font-size: 120%;
+    color: #888;
+}
+
+.doc-toolbar i:hover {
+    color: @d-red;
 }
 
 .doc-entry .doc-declaration .doc-signature {
@@ -334,25 +362,26 @@ ol.breadcrumb li.active code {
 .doc-entry .doc-name {
     color: @d-red;
     font-weight: 600;
+    text-decoration: underline;
 }
 
 .doc-entry .doc-summary {
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 7px 15px;
     border-top-width: 0px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-a.doc-crossref {
-    color: @text-color;
+span.doc-crossref {
+    color: darken(@d-red, 7%);
     outline: none;
 }
 
-a.doc-crossref:hover {
+span.doc-crossref:hover {
     color: @link-color;
-    border-bottom: 1px solid @link-color;
-    text-decoration: none;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .doc-popup {
@@ -401,4 +430,16 @@ i.doc-toggle {
 }
 
 .doc-variable {
+    font-style: italic;
+}
+
+.doc-entry h4 {
+    font-weight: normal;
+    color: lighten(@text-color, 20%);
+    font-size: @font-size-base;
+    text-decoration: underline;
+}
+
+dl.doc-parameters dt {
+    font-weight: 500;
 }

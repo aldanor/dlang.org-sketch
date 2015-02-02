@@ -186,22 +186,35 @@
         </div>
         <div class="doc-entry">
             <div class="doc-declaration">
-
                 <div class="doc-signature">
-                    <a href="#" id="array-1-toggle" data-toggle="collapse" data-target="#array-1" href="#array-1" aria-expanded="false" aria-controls="array-1"><i class="fa fa-plus doc-toggle"></i></a>
-                    <a href="#" data-target="#ForeachType" class="doc-crossref">ForeachType</a>!Range[] <span class="doc-name">array</span>(Range)(Range <span class="doc-variable">r</span>)
+                    <a href="#" id="array-1-toggle" data-toggle="collapse" data-target=".array-1" href="#array-1" aria-expanded="false" aria-controls="array-1"><i class="fa fa-plus doc-toggle"></i></a>
+                    <span data-target="#ForeachType" class="doc-crossref">ForeachType</span>!Range[] <span class="doc-name">array</span>(Range)(Range <span class="doc-variable">r</span>)
+                    <div class="doc-toolbar">
+                        <a href="#"><i class="fa fa fa-angle-double-down"></i></a>
+                        <a href="#"><i class="fa fa fa-link"></i></a>
+                    </div>
                 </div>
-                <div class="doc-constraint">
-                    if (<a href="#" class="doc-crossref" data-target="#isIterable">isIterable</a>!Range &amp;&amp; !<a href="#" class="doc-crossref" data-target="#isNarrowString">isNarrowString</a>!Range &amp;&amp; !<a href="#" class="doc-crossref" data-target="#isInfinite">isInfinite</a>!Range)
+                <div class="collapse array-1">
+                    <div class="doc-constraint">
+                        if (<span class="doc-crossref" data-target="#isIterable">isIterable</span>!Range &amp;&amp; !<span class="doc-crossref" data-target="#isNarrowString">isNarrowString</span>!Range &amp;&amp; !<span class="doc-crossref" data-target="#isInfinite">isInfinite</span>!Range)
+                    </div>
                 </div>
             </div>
-            <div class="doc-summary collapse-group">
-                Returns a newly-allocated dynamic array consisting of a copy of the input range, static array, dynamic array, or class or struct with an <code>opApply</code> function <code>r</code>. Note that narrow strings are handled as a special case in an overload.
-                <div class="doc-detail collapse" id="array-1">
-                    <h5>Examples</h5>
-                    <pre class="d_code notranslate"><span class="d_keyword">auto</span> a = <span class="d_psymbol">array</span>([1, 2, 3, 4, 5][]);
-<span class="d_keyword">assert</span>(a == [ 1, 2, 3, 4, 5 ]);
-</pre>
+            <div class="doc-summary">
+                Returns a copy of the input range in a newly allocated dynamic array.
+                <div class="collapse array-1">
+                    <div class="doc-detail">
+                        <h4>Parameters</h4>
+                        <dl class="dl-horizontal doc-parameters">
+                            <dt><code>Range r</code></dt>
+                            <dd>An input range, static array, dynamic array, or class or struct an an <code>opApply</code> function.</dd>
+                        </dl>
+                        Note: narrow strings are handled as a special case in an overload.
+                        <h4>Examples</h4>
+                        <pre class="d_code notranslate"><span class="d_keyword">auto</span> a = <span class="d_psymbol">array</span>([1, 2, 3, 4, 5][]);
+    <span class="d_keyword">assert</span>(a == [ 1, 2, 3, 4, 5 ]);
+    </pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,14 +222,51 @@
         <div class="doc-entry">
             <div class="doc-declaration">
                 <div class="doc-signature">
-                    <a href="#" class="doc-crossref" data-target="#ElementType">ElementType</a>!String[] <span class="doc-name">array</span>(String)(String str)
+                    <span class="doc-crossref" data-target="#ElementType">ElementType</span>!String[] <span class="doc-name">array</span>(String)(String <span class="doc-variable">str</span>)
                 </div>
                 <div class="doc-constraint">
-                    if (<a href="#" class="doc-crossref" data-target="#isNarrowString">isNarrowString</a>!String)
+                    if (<span class="doc-crossref" data-target="#isNarrowString">isNarrowString</span>!String)
                 </div>
             </div>
             <div class="doc-summary">
-                Convert a narrow string to an array type that fully supports random access. This is handled as a special case and always returns a <code>dchar[]</code>, <code>const(dchar)[]</code>, or <code>immutable(dchar)[]</code> depending on the constness of the input.
+                Convert a narrow string to an array type that fully supports random access.
+                <div class="doc-detail">
+                    This is handled as a special case and always returns a <code>dchar[]</code>, <code>const(dchar)[]</code>, or <code>immutable(dchar)[]</code> depending on the constness of the input.
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-entry">
+            <div class="doc-declaration">
+                <div class="doc-signature">
+                    auto <span class="doc-name">assocArray</span>(Range)(Range <span class="doc-variable">r</span>)
+                </div>
+                <div class="doc-constraint">
+                    if (<span class="doc-crossref" data-target="#isInputRange">isInputRange</span>!Range &amp;&amp; <span class="doc-crossref" data-target="#ElementType">ElementType</span>!Range.length == 2 &amp;&amp; <span class="doc-crossref" data-target="#isMutable">isMutable</span>!(<span class="doc-crossref" data-target="#ElementType">ElementType</span>!Range.Types[1]))
+                </div>
+            </div>
+            <div class="doc-summary">
+                Returns a newly allocated associative array from a range of key/value tuples.
+                <h4>Parameters</h4>
+                <dl class="dl-horizontal doc-parameters">
+                    <dt><code>Range r</code></dt>
+                    <dd>An input range of tuples of keys and values.</dd>
+                </dl>
+                <h4>See Also</h4>
+                <ul>
+                    <li><code><a href="#">std.typecons.Tuple</a></code></li>
+                </ul>
+                <h4>Examples</h4>
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.range;
+<span class="d_keyword">import</span> std.typecons;
+<span class="d_keyword">auto</span> a = <span class="d_psymbol">assocArray</span>(zip([0, 1, 2], [<span class="d_string">"a"</span>, <span class="d_string">"b"</span>, <span class="d_string">"c"</span>]));
+<span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_keyword">typeof</span>(a) == string[<span class="d_keyword">int</span>]));
+<span class="d_keyword">assert</span>(a == [0:<span class="d_string">"a"</span>, 1:<span class="d_string">"b"</span>, 2:<span class="d_string">"c"</span>]);
+
+<span class="d_keyword">auto</span> b = <span class="d_psymbol">assocArray</span>([ tuple(<span class="d_string">"foo"</span>, <span class="d_string">"bar"</span>), tuple(<span class="d_string">"baz"</span>, <span class="d_string">"quux"</span>) ]);
+<span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_keyword">typeof</span>(b) == string[string]));
+<span class="d_keyword">assert</span>(b == [<span class="d_string">"foo"</span>:<span class="d_string">"bar"</span>, <span class="d_string">"baz"</span>:<span class="d_string">"quux"</span>]);
+</pre>
             </div>
         </div>
     </div>

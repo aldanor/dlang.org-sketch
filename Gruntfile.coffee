@@ -26,7 +26,7 @@ module.exports = (grunt) ->
                 options:
                     interrupt: yes
             less:
-                files: ['less/style.less']
+                files: ['less/*.less']
                 tasks: ['less-task']
                 options:
                     interrupt: yes
@@ -96,6 +96,12 @@ module.exports = (grunt) ->
             target:
                 files:
                     'dist/css/style.css': ['build/css/style.css']
+        notify_hooks:
+            options:
+                enabled: true,
+                max_jshint_notifications: 5
+                success: true
+                duration: 1
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -105,6 +111,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-bower-concat'
+    grunt.loadNpmTasks 'grunt-notify'
 
     grunt.registerTask 'dist', ['bower_concat', 'uglify:vendor', 'copy']
     grunt.registerTask 'coffee-task', ['coffee', 'coffeelint']
@@ -112,3 +119,5 @@ module.exports = (grunt) ->
     grunt.registerTask 'build', ['coffee-task', 'less-task', 'copy:html']
     grunt.registerTask 'default', ['dist', 'build']
     grunt.registerTask 'dev', ['build', 'watch']
+
+    grunt.task.run 'notify_hooks'

@@ -23,6 +23,7 @@
         "grunt-contrib-copy": "*",
         "grunt-contrib-less": "*",
         "grunt-contrib-cssmin": "*",
-        "grunt-bower-concat": "*"
+        "grunt-bower-concat": "*",
+        "grunt-notify": "*"
     }
 }
