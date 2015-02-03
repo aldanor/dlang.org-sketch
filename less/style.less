@@ -328,7 +328,7 @@ ol.breadcrumb li.active code {
         background-color: #fafafa;
         overflow: hidden;
 
-        &:hover, &:focus {
+        .no-touch &:hover {
             background-color: #f3f3f3;
             cursor: pointer;
 
@@ -355,7 +355,7 @@ ol.breadcrumb li.active code {
             a {
                 color: #888;
 
-                &:hover, &:focus {
+                .no-touch &:hover {
                     color: @d-red;
                 }
             }
@@ -384,7 +384,7 @@ ol.breadcrumb li.active code {
                 font-size: 110%;
                 color: #ddd;
 
-                &:hover, &:focus {
+                .no-touch &:hover {
                     color: @d-red;
                 }
             }
@@ -411,7 +411,7 @@ ol.breadcrumb li.active code {
         color: darken(@d-red, 7%);
         outline: none;
 
-        &:hover, &:focus {
+        .no-touch &:hover {
             color: @link-color;
             text-decoration: underline;
             cursor: pointer;

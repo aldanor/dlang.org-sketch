@@ -24,6 +24,7 @@
         "grunt-contrib-less": "*",
         "grunt-contrib-cssmin": "*",
         "grunt-bower-concat": "*",
-        "grunt-notify": "*"
+        "grunt-notify": "*",
+        "grunt-modernizr": "*"
     }
 }

@@ -102,6 +102,31 @@ module.exports = (grunt) ->
                 max_jshint_notifications: 5
                 success: true
                 duration: 1
+        modernizr:
+            dist:
+                devFile: 'bower_components/modernizr/modernizr.js'
+                outputFile: 'dist/js/modernizr.js'
+            extra:
+                shiv: true
+                printshiv: false
+                load: true
+                mq: false
+                cssclasses: true
+            extensibility:
+                addtest: false
+                prefixed: false
+                teststyles: false
+                testprops: false
+                testallprops: false
+                hasevents: false
+                prefixes: false
+                domprefixes: false
+                cssclassprefix: ""
+            uglify: true
+            tests: []
+            parseFiles: false
+            matchCommunityTests: false
+            customTests: []
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -112,8 +137,9 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-bower-concat'
     grunt.loadNpmTasks 'grunt-notify'
+    grunt.loadNpmTasks 'grunt-modernizr'
 
-    grunt.registerTask 'dist', ['bower_concat', 'uglify:vendor', 'copy']
+    grunt.registerTask 'dist', ['bower_concat', 'uglify:vendor', 'copy', 'modernizr:dist']
     grunt.registerTask 'coffee-task', ['coffee', 'coffeelint']
     grunt.registerTask 'less-task', ['less', 'cssmin']
     grunt.registerTask 'build', ['coffee-task', 'less-task', 'copy:html']

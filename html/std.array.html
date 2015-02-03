@@ -7,8 +7,7 @@
     <link href="/img/favicon32x32.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/vendor.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/modernizr.js"></script>
 </head>
 
 <body>
@@ -75,13 +74,14 @@
         </div>
     </nav>
 
-    <ol class="breadcrumb">
-        <li><a href="#">Documentation</a></li>
-        <li><a href="#">Standard Library</a></li>
-        <li><a href="#"><code>std</code></a></li>
-        <li class="active"><code>array</code></li>
-    </ol>
-
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Standard Library</a></li>
+            <li><a href="#"><code>std</code></a></li>
+            <li class="active"><code>array</code></li>
+        </ol>
+    </div>
     <div id="ForeachType" class="well doc-popup">
         <h5 class="doc-header"><code><a href="#">std.traits.ForeachType</a></code></h5>
         <div class="doc-entry">
@@ -343,6 +343,7 @@ Tuple!(string, <span class="d_keyword">int</span>)[] pairs;
 
     </div>
 
+    <script src="js/vendor.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>
