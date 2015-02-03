@@ -13,9 +13,9 @@ initializeDocPopups = ->
         el = $(this)
         target = $(el.data 'target')
         if target?
-            target.click ->
+            target.on 'click touchstart', ->
                 target.popup 'hide'
-            el.click (event) ->
+            el.on 'click touchstart', (event) ->
                 if target.data 'popup-visible'
                     target.popup 'hide'
                 else
@@ -32,7 +32,9 @@ initializeDocCollapse = ->
         target = el.find(el.data('target'))
         icon = el.find('i.doc-collapse')
         if icon? and target?
-            el.click ->
+            el.on 'click touchstart', (event) ->
+                event.preventDefault()
+                $(el.data('target')).collapse 'toggle'
                 if target.hasClass('collapse in')
                     icon.removeClass 'fa-angle-double-up'
                     icon.addClass 'fa-angle-double-down'

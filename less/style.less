@@ -297,7 +297,6 @@ ol.breadcrumb li.active code {
 @doc-h-padding: 15px;
 
 .doc-container {
-    // padding-top: 15px;
 }
 
 .doc-entry {
@@ -309,95 +308,127 @@ ol.breadcrumb li.active code {
     -webkit-transform: perspective(1px) translate3d(0, 0, 0);
     -moz-transform: perspective(1px) translate3d(0, 0, 0);
     -webkit-font-smoothing: subpixel-antialiased;
-}
 
-.doc-entry .doc-declaration {
-    border: 1px solid #ddd;
-    padding: 6px @doc-h-padding;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-left-width: 4px;
-    border-left-color: @d-red;
-    font-family: @font-family-monospace;
-    background-color: #fafafa;
-    overflow: hidden;
-}
-
-.doc-entry .doc-declaration:hover {
-    background-color: #f3f3f3;
-    cursor: pointer;
-}
-
-.doc-entry .doc-declaration:hover i.doc-collapse {
-    color: @d-red;
-}
-
-.doc-entry .doc-toolbar {
-    float: right;
-}
-
-.doc-toolbar i {
-    font-size: 140%;
-    color: #888;
-}
-
-.doc-summary .doc-toolbar i {
-    font-size: 110%;
-    color: #ddd;
-}
-
-.doc-summary .doc-toolbar i:hover {
-    color: @d-red;
-}
-
-.doc-entry .doc-declaration .doc-signature {
-    font-size: @font-size-base - 0px;
-    @media(max-width: @screen-xs-max) {
-        font-size: 85%;
+    .doc-name {
+        color: @d-red;
+        font-weight: 600;
+        text-decoration: underline;
     }
-}
 
-.doc-entry .doc-declaration .doc-constraint {
-    border-top: 1px solid #eee;
-    padding-top: 4px;
-    margin-top: 4px;
-    font-size: @font-size-base - 3px;
-    color: #888;
-    padding-left: @doc-h-padding + 15px;
-}
+    @media(max-width: @screen-xs-max) { font-size: 85%; }
 
-.doc-entry .doc-declaration .doc-constraint a {
-    color: #888;
-}
+    .doc-declaration {
+        border: 1px solid #ddd;
+        padding: 6px @doc-h-padding;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-left-width: 4px;
+        border-left-color: @d-red;
+        font-family: @font-family-monospace;
+        background-color: #fafafa;
+        overflow: hidden;
 
-.doc-entry .doc-declaration .doc-constraint a:hover {
-    color: @d-red;
-}
+        &:hover, &:focus {
+            background-color: #f3f3f3;
+            cursor: pointer;
 
-.doc-entry .doc-name {
-    color: @d-red;
-    font-weight: 600;
-    text-decoration: underline;
-}
+            i.doc-collapse {
+                color: @d-red;
+            }
+        }
 
-.doc-entry .doc-summary {
-    border: 1px solid #ddd;
-    padding: 7px @doc-h-padding;
-    border-top-width: 0px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    overflow: hidden;
-}
+        .doc-signature {
+            font-size: @font-size-base;
+            @media(max-width: @screen-xs-max) { font-size: 95%; }
+        }
 
-span.doc-crossref {
-    color: darken(@d-red, 7%);
-    outline: none;
-}
+        .doc-constraint {
+            border-top: 1px solid #eee;
+            padding-top: 4px;
+            margin-top: 4px;
+            font-size: @font-size-base - 3px;
+            @media(max-width: @screen-xs-max) { font-size: 85%; }
+            color: #888;
+            padding-left: @doc-h-padding + 15px;
+            -webkit-transform: translate3d(0px, 0px, 0px);
 
-span.doc-crossref:hover {
-    color: @link-color;
-    text-decoration: underline;
-    cursor: pointer;
+            a {
+                color: #888;
+
+                &:hover, &:focus {
+                    color: @d-red;
+                }
+            }
+        }
+    }
+
+    .doc-toolbar {
+        float: right;
+
+         i {
+            font-size: 140%;
+            color: #888;
+        }
+    }
+
+    .doc-summary {
+        border: 1px solid #ddd;
+        padding: 7px @doc-h-padding;
+        border-top-width: 0px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        overflow: hidden;
+
+        .doc-toolbar {
+            i {
+                font-size: 110%;
+                color: #ddd;
+
+                &:hover, &:focus {
+                    color: @d-red;
+                }
+            }
+        }
+
+        dl.doc-parameters dt {
+            font-weight: 500;
+        }
+    }
+
+    h4 {
+        font-weight: normal;
+        color: lighten(@text-color, 20%);
+        font-size: @font-size-base;
+        @media(max-width: @screen-xs-max) { font-size: 85%; }
+        text-decoration: underline;
+    }
+
+    .doc-variable {
+        font-style: italic;
+    }
+
+    .doc-crossref {
+        color: darken(@d-red, 7%);
+        outline: none;
+
+        &:hover, &:focus {
+            color: @link-color;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    pre.d_code {
+        background-color: #fff;
+        font-size: @font-size-base - 1px;
+        @media(max-width: @screen-xs-max) { font-size: 85%; }
+    }
+
+    .doc-detail {
+        border-top: 1px solid #eee;
+        margin-top: 7px;
+        -webkit-transform: translate3d(0px, 0px, 0px);
+    }
 }
 
 .doc-popup {
@@ -407,67 +438,42 @@ span.doc-crossref:hover {
     margin: 4px;
     padding: 15px;
     max-width: 800px;
-}
 
-.doc-popup .doc-entry {
-    margin: 5px 0px;
-}
+    .doc-header {
+        text-decoration: underline;
+    }
 
-.doc-popup .doc-declaration {
-    margin-top: 20px;
-}
+    .doc-entry {
+        margin: 5px 0px;
 
-.doc-popup .doc-header {
-    text-decoration: underline;
-}
-
-.doc-entry pre.d_code {
-    background-color: #fff;
-    font-size: @font-size-base - 2px;
-}
-
-.doc-entry .doc-detail {
-    border-top: 1px solid #eee;
-    margin-top: 7px;
+        .doc-declaration {
+            margin-top: 20px;
+        }
+    }
 }
 
 .doc-top-header {
     padding-bottom: 0px;
     border-bottom: 2px solid @d-red;
     margin-bottom: 20px;
-}
 
-.doc-top-header h4 {
-    margin-bottom: 4px;
-}
-
-.doc-variable {
-    font-style: italic;
-}
-
-.doc-entry h4 {
-    font-weight: normal;
-    color: lighten(@text-color, 20%);
-    font-size: @font-size-base;
-    text-decoration: underline;
-}
-
-dl.doc-parameters dt {
-    font-weight: 500;
+    h4 {
+        margin-bottom: 4px;
+    }
 }
 
 .collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  -webkit-transform: translateZ(0);
-  -webkit-transition: height 0.25s ease 1s linear;
-  -moz-transition: height 0.25s ease 1s linear;
-  -o-transition: height 0.25s ease 1s linear;
-  -ms-transition: height 0.25s ease 1s linear;
-  transition: height 0.25s ease 1s linear;
-  -webkit-transition: height 0.25s ease;
-  transition: height 0.25s ease;
-  -webkit-backface-visibility: hidden;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    -webkit-transition: height 0.35s ease 1s linear;
+    -moz-transition: height 0.35s ease 1s linear;
+    -o-transition: height 0.35s ease 1s linear;
+    -ms-transition: height 0.35s ease 1s linear;
+    transition: height 0.35s ease 1s linear;
+    -webkit-transition: height 0.35s ease;
+    transition: height 0.35s ease;
+    -webkit-backface-visibility: hidden;
 }
 

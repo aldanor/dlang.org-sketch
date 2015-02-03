@@ -262,7 +262,7 @@
             <div class="doc-summary">
                 Create a new associative array from a range of key/value tuples.
                 <div class="doc-toolbar">
-                    <a href="#array-1"><i class="fa fa fa-link"></i></a>
+                    <a href="#array-1"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="collapse assocArray doc-collapse">
                     <div class="doc-detail">
@@ -276,20 +276,71 @@
                             <li><code><a href="#">std.typecons.Tuple</a></code></li>
                         </ul>
                         <h4>Examples</h4>
-        <pre class="d_code notranslate"><span class="d_keyword">import</span> std.range;
-        <span class="d_keyword">import</span> std.typecons;
-        <span class="d_keyword">auto</span> a = <span class="d_psymbol">assocArray</span>(zip([0, 1, 2], [<span class="d_string">"a"</span>, <span class="d_string">"b"</span>, <span class="d_string">"c"</span>]));
-        <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_keyword">typeof</span>(a) == string[<span class="d_keyword">int</span>]));
-        <span class="d_keyword">assert</span>(a == [0:<span class="d_string">"a"</span>, 1:<span class="d_string">"b"</span>, 2:<span class="d_string">"c"</span>]);
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.range;
+<span class="d_keyword">import</span> std.typecons;
+<span class="d_keyword">auto</span> a = <span class="d_psymbol">assocArray</span>(zip([0, 1, 2], [<span class="d_string">"a"</span>, <span class="d_string">"b"</span>, <span class="d_string">"c"</span>]));
+<span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_keyword">typeof</span>(a) == string[<span class="d_keyword">int</span>]));
+<span class="d_keyword">assert</span>(a == [0:<span class="d_string">"a"</span>, 1:<span class="d_string">"b"</span>, 2:<span class="d_string">"c"</span>]);
 
-        <span class="d_keyword">auto</span> b = <span class="d_psymbol">assocArray</span>([ tuple(<span class="d_string">"foo"</span>, <span class="d_string">"bar"</span>), tuple(<span class="d_string">"baz"</span>, <span class="d_string">"quux"</span>) ]);
-        <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_keyword">typeof</span>(b) == string[string]));
-        <span class="d_keyword">assert</span>(b == [<span class="d_string">"foo"</span>:<span class="d_string">"bar"</span>, <span class="d_string">"baz"</span>:<span class="d_string">"quux"</span>]);
-        </pre>
+<span class="d_keyword">auto</span> b = <span class="d_psymbol">assocArray</span>([ tuple(<span class="d_string">"foo"</span>, <span class="d_string">"bar"</span>), tuple(<span class="d_string">"baz"</span>, <span class="d_string">"quux"</span>) ]);
+<span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(<span class="d_keyword">typeof</span>(b) == string[string]));
+<span class="d_keyword">assert</span>(b == [<span class="d_string">"foo"</span>:<span class="d_string">"bar"</span>, <span class="d_string">"baz"</span>:<span class="d_string">"quux"</span>]);
+</pre>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="doc-entry">
+            <div class="doc-declaration" data-toggle="collapse" data-target=".byPair" aria-expanded="false" aria-controls="byPair" id="byPair">
+                <div class="doc-signature">
+                    auto <span class="doc-name">byPair</span>(Key, Value)(Value[Key] <span class="doc-variable">aa</span>)
+                    <div class="doc-toolbar">
+                        <i class="fa fa-angle-double-down doc-collapse"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="doc-summary">
+                Construct a range iterating over an associative array by key/value tuples.
+                <div class="doc-toolbar">
+                    <a href="#byPair"><i class="fa fa-link"></i></a>
+                </div>
+                <div class="collapse byPair doc-collapse">
+                    <div class="doc-detail">
+                        <h4>Parameters</h4>
+                        <dl class="dl-horizontal doc-parameters">
+                            <dt><code>Value[Key] aa</code></dt>
+                            <dd>The associative array to iterate over.</dd>
+                        </dl>
+                        <h4>Returns</h4>
+                        A forward range of tuples of key and value pairs from the given associative array.
+                        <h4>Examples</h4>
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.typecons : tuple, Tuple;
+<span class="d_keyword">import</span> std.algorithm : sort;
+
+<span class="d_keyword">auto</span> aa = [<span class="d_string">"a"</span>: 1, <span class="d_string">"b"</span>: 2, <span class="d_string">"c"</span>: 3];
+Tuple!(string, <span class="d_keyword">int</span>)[] pairs;
+
+<span class="d_comment">// Iteration over key/value pairs.
+</span><span class="d_keyword">foreach</span> (pair; aa.<span class="d_psymbol">byPair</span>)
+{
+    pairs ~= pair;
+}
+
+<span class="d_comment">// Iteration order is implementation-dependent, so we should sort it to get
+</span><span class="d_comment">// a fixed order.
+</span>sort(pairs);
+<span class="d_keyword">assert</span>(pairs == [
+    tuple(<span class="d_string">"a"</span>, 1),
+    tuple(<span class="d_string">"b"</span>, 2),
+    tuple(<span class="d_string">"c"</span>, 3)
+]);
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </body>
