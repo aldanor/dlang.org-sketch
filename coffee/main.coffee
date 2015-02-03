@@ -35,7 +35,7 @@ initializeDocCollapse = ->
             el.on 'click', (event) ->
                 event.preventDefault()
                 target.collapse 'toggle'
-                if target.hasClass('collapse in')
+                if target.first().attr('aria-expanded') == 'false'
                     icon.removeClass 'fa-angle-double-up'
                     icon.addClass 'fa-angle-double-down'
                 else
