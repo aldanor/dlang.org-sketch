@@ -6,8 +6,7 @@ initializeDocPopups = ->
     # $.fn.popup.defaults.vertical      = 'bottom'
     # $.fn.popup.defaults.horizontal    = 'leftedge'
     # $.fn.popup.defaults.offsetleft    = -45
-    # $.fn.popup.defaults.transition    = '0.3s opacity 0.0s'
-    $.fn.popup.defaults.tooltipanchor = $('#ForeachType_open')
+    $.fn.popup.defaults.transition    = '0.3s opacity 0.0s'
 
     $('.doc-crossref').each ->
         el = $(this)
@@ -22,7 +21,7 @@ initializeDocPopups = ->
                     target.popup
                         tooltipanchor: event.target
                         autoopen: true
-                        transition: 'all 0.3s'
+                        # transition: 'all 0.3s'
                         scrolllock: true
                 event.stopPropagation()
 

@@ -23,7 +23,8 @@
 @input-border-focus:                    @brand-primary;
 
 @navbar-height:                         40px;
-@navbar-inverse-bg:                     @d-red;
+// @navbar-inverse-bg:                     @d-red;
+@navbar-inverse-bg:                     #444;
 @navbar-inverse-color:                  lighten(@gray-light, 30%);
 @navbar-inverse-border:                 darken(@navbar-inverse-bg, 7%);
 @navbar-inverse-link-color:             darken(@white, 8%);
@@ -39,7 +40,8 @@
 @navbar-inverse-toggle-hover-bg:        #333;
 @navbar-inverse-toggle-icon-bar-bg:     #fff;
 
-@dropdown-bg:                           @d-red;
+// @dropdown-bg:                           @d-red;
+@dropdown-bg:                           #444;
 @dropdown-border:                       @navbar-inverse-border;
 @dropdown-fallback-border:              @navbar-inverse-border;
 @dropdown-divider-bg:                   #e5e5e5;
@@ -90,7 +92,8 @@ i.inline-icon {
 // the SVG D brand logo in the navbar
 img#d-logo {
     margin-top: -9px;
-    margin-left: -15px;
+    // margin-left: -15px;
+    margin-left: 0px;
     height: @navbar-height;
 }
 
@@ -110,11 +113,11 @@ img#d-logo {
 
 
 .navbar-inverse {
-    font-size: @font-size-base - 1;
+    font-size: @font-size-base;
 }
 
 .dropdown-menu li {
-    font-size: @font-size-base - 2;
+    font-size: @font-size-base - 1;
 }
 
 .intro-pitch {
@@ -332,12 +335,13 @@ ol.breadcrumb li.active code {
     }
 
     .doc-declaration {
-        border: 2px solid #ddd;
+        border: 1px solid #ddd;
         padding: 6px @doc-h-padding;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         border-left-width: 4px;
-        border-left-color: @d-red;
+        // border-left-color: @d-red;
+        border-left-color: #aaa;
         font-family: @font-family-monospace;
         background-color: #fafafa;
         overflow: hidden;
@@ -362,12 +366,12 @@ ol.breadcrumb li.active code {
             margin-top: 4px;
             font-size: @font-size-base - 2px;
             @media(max-width: @screen-xs-max) { font-size: 85%; }
-            color: #888;
+            color: #666;
             padding-left: @doc-h-padding;
             -webkit-transform: translate3d(0px, 0px, 0px);
 
             a {
-                color: #888;
+                color: #999;
 
                 .no-touch &:hover {
                     color: @d-red;
@@ -426,7 +430,8 @@ ol.breadcrumb li.active code {
     }
 
     .doc-crossref {
-        color: darken(@d-red, 7%);
+        // color: darken(@d-red, 7%);
+        color: #777;
         outline: none;
 
         .no-touch &:hover {
@@ -434,6 +439,10 @@ ol.breadcrumb li.active code {
             text-decoration: underline;
             cursor: pointer;
         }
+    }
+
+    .doc-constraint .doc-crossref {
+        color: #999;
     }
 
     pre.d_code {
