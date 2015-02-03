@@ -29,12 +29,12 @@ initializeDocPopups = ->
 initializeDocCollapse = ->
     $('.doc-declaration').each ->
         el = $(this)
-        target = el.find(el.data('target'))
+        target = el.parent().find(el.data('target'))
         icon = el.find('i.doc-collapse')
         if icon? and target?
             el.on 'click', (event) ->
                 event.preventDefault()
-                $(el.data('target')).collapse 'toggle'
+                target.collapse 'toggle'
                 if target.hasClass('collapse in')
                     icon.removeClass 'fa-angle-double-up'
                     icon.addClass 'fa-angle-double-down'

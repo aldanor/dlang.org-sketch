@@ -187,7 +187,7 @@
                 <div class="doc-signature">
                     <span data-target="#ForeachType" class="doc-crossref">ForeachType</span>!Range[] <span class="doc-name">array</span>(Range)(Range <span class="doc-variable">r</span>)
                     <div class="doc-toolbar">
-                        <i class="fa fa fa-angle-double-down doc-collapse"></i>
+                        <i class="fa fa-angle-double-down doc-collapse"></i>
                     </div>
                 </div>
                 <div class="collapse array-1 doc-collapse">
@@ -198,8 +198,8 @@
             </div>
             <div class="doc-summary">
                 Create a new dynamic array containing a copy of the input range.
-                <div class="doc-toolbar">
-                    <a href="#array-1"><i class="fa fa fa-link"></i></a>
+                <div class="doc-toolbar doc-link">
+                    <a href="#array-1"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="collapse array-1 doc-collapse">
                     <div class="doc-detail">
@@ -223,7 +223,7 @@
                 <div class="doc-signature">
                     <span class="doc-crossref" data-target="#ElementType">ElementType</span>!String[] <span class="doc-name">array</span>(String)(String <span class="doc-variable">str</span>)
                     <div class="doc-toolbar">
-                        <i class="fa fa fa-angle-double-down doc-collapse"></i>
+                        <i class="fa fa-angle-double-down doc-collapse"></i>
                     </div>
                 </div>
                 <div class="collapse array-2 doc-collapse">
@@ -234,8 +234,8 @@
             </div>
             <div class="doc-summary">
                 Convert a narrow string to an array type that fully supports random access.
-                <div class="doc-toolbar">
-                    <a href="#array-1"><i class="fa fa fa-link"></i></a>
+                <div class="doc-toolbar doc-link">
+                    <a href="#array-2"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="collapse array-2 doc-collapse">
                     <div class="doc-detail">
@@ -250,7 +250,7 @@
                 <div class="doc-signature">
                     auto <span class="doc-name">assocArray</span>(Range)(Range <span class="doc-variable">r</span>)
                     <div class="doc-toolbar">
-                        <i class="fa fa fa-angle-double-down doc-collapse"></i>
+                        <i class="fa fa-angle-double-down doc-collapse"></i>
                     </div>
                 </div>
                 <div class="collapse assocArray doc-collapse">
@@ -261,8 +261,8 @@
             </div>
             <div class="doc-summary">
                 Create a new associative array from a range of key/value tuples.
-                <div class="doc-toolbar">
-                    <a href="#array-1"><i class="fa fa-link"></i></a>
+                <div class="doc-toolbar doc-link">
+                    <a href="#assocArray"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="collapse assocArray doc-collapse">
                     <div class="doc-detail">
@@ -302,7 +302,7 @@
             </div>
             <div class="doc-summary">
                 Construct a range iterating over an associative array by key/value tuples.
-                <div class="doc-toolbar">
+                <div class="doc-toolbar doc-link">
                     <a href="#byPair"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="collapse byPair doc-collapse">
@@ -323,9 +323,7 @@ Tuple!(string, <span class="d_keyword">int</span>)[] pairs;
 
 <span class="d_comment">// Iteration over key/value pairs.
 </span><span class="d_keyword">foreach</span> (pair; aa.<span class="d_psymbol">byPair</span>)
-{
     pairs ~= pair;
-}
 
 <span class="d_comment">// Iteration order is implementation-dependent, so we should sort it to get
 </span><span class="d_comment">// a fixed order.

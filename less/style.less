@@ -294,6 +294,12 @@ ol.breadcrumb li.active code {
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
+.no-touch {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 @doc-h-padding: 15px;
 
 .doc-container {
@@ -317,8 +323,16 @@ ol.breadcrumb li.active code {
 
     @media(max-width: @screen-xs-max) { font-size: 85%; }
 
+    .doc-link {
+        visibility: hidden;
+    }
+
+    .no-touch &:hover .doc-link {
+        visibility: visible;
+    }
+
     .doc-declaration {
-        border: 1px solid #ddd;
+        border: 2px solid #ddd;
         padding: 6px @doc-h-padding;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
@@ -346,10 +360,10 @@ ol.breadcrumb li.active code {
             border-top: 1px solid #eee;
             padding-top: 4px;
             margin-top: 4px;
-            font-size: @font-size-base - 3px;
+            font-size: @font-size-base - 2px;
             @media(max-width: @screen-xs-max) { font-size: 85%; }
             color: #888;
-            padding-left: @doc-h-padding + 15px;
+            padding-left: @doc-h-padding;
             -webkit-transform: translate3d(0px, 0px, 0px);
 
             a {
@@ -399,8 +413,12 @@ ol.breadcrumb li.active code {
         font-weight: normal;
         color: lighten(@text-color, 20%);
         font-size: @font-size-base;
-        @media(max-width: @screen-xs-max) { font-size: 85%; }
+        @media(max-width: @screen-xs-max) { font-size: @font-size-base * 0.85; }
         text-decoration: underline;
+    }
+
+    h4:first-of-type {
+        margin-top: 0px;
     }
 
     .doc-variable {
@@ -427,6 +445,7 @@ ol.breadcrumb li.active code {
     .doc-detail {
         border-top: 1px solid #eee;
         margin-top: 7px;
+        padding-top: 7px;
         -webkit-transform: translate3d(0px, 0px, 0px);
     }
 }
