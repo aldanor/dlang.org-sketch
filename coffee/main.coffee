@@ -24,36 +24,27 @@ initializeDocPopups = ->
                         autoopen: true
                         transition: 'all 0.3s'
                         scrolllock: true
+                event.stopPropagation()
+
+initializeDocCollapse = ->
+    $('.doc-declaration').each ->
+        el = $(this)
+        target = el.find(el.data('target'))
+        icon = el.find('i.doc-collapse')
+        if icon? and target?
+            el.click ->
+                if target.hasClass('collapse in')
+                    icon.removeClass 'fa-angle-double-up'
+                    icon.addClass 'fa-angle-double-down'
+                else
+                    icon.removeClass 'fa-angle-double-down'
+                    icon.addClass 'fa-angle-double-up'
+
 
 $ ->
     initializeDocPopups()
+    initializeDocCollapse()
     intializeTwitterWidget()
-
-    $('.doc-toggle').each ->
-        el = $(this)
-        el.click ->
-            console.log el
-            console.log el.parent()
-            console.log el.parent().hasClass 'collapsed'
-            if el.parent().hasClass 'collapsed'
-                el.removeClass 'fa-caret-right'
-                el.addClass 'fa-caret-down'
-            else
-                el.removeClass 'fa-caret-down'
-                el.addClass 'fa-caret-right'
-
-
-
-# $(document).ready(function() {
-#   $('#example-type-inference').on('show', function() {
-#     $('#example-type-inference-toggle')
-#     .html('Hide example <i class="fa fa-care-up"></i>');
-#   });
-#   $('#example-type-inference').on('hide', function() {
-#     $('#example-type-inference-toggle')
-#     .html('Show example <i class="fa fa-care-down"></i>');
-#   });
-# });
 
 
 # $ ->

@@ -294,14 +294,14 @@ ol.breadcrumb li.active code {
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
-@doc-h-padding: 20px;
+@doc-h-padding: 15px;
 
 .doc-container {
     // padding-top: 15px;
 }
 
 .doc-entry {
-    margin: @doc-h-padding 0px;
+    margin: 10px 0px;
 
     // because Safari is stupid...
     -webkit-backface-visibility: hidden;
@@ -320,28 +320,41 @@ ol.breadcrumb li.active code {
     border-left-color: @d-red;
     font-family: @font-family-monospace;
     background-color: #fafafa;
+    overflow: hidden;
 }
 
 .doc-entry .doc-declaration:hover {
-    // background-color: #f3f3f3;
-    // cursor: pointer;
+    background-color: #f3f3f3;
+    cursor: pointer;
 }
 
-.doc-entry .doc-declaration .doc-toolbar {
+.doc-entry .doc-declaration:hover i.doc-collapse {
+    color: @d-red;
+}
+
+.doc-entry .doc-toolbar {
     float: right;
 }
 
 .doc-toolbar i {
-    font-size: 120%;
+    font-size: 140%;
     color: #888;
 }
 
-.doc-toolbar i:hover {
+.doc-summary .doc-toolbar i {
+    font-size: 110%;
+    color: #ddd;
+}
+
+.doc-summary .doc-toolbar i:hover {
     color: @d-red;
 }
 
 .doc-entry .doc-declaration .doc-signature {
     font-size: @font-size-base - 0px;
+    @media(max-width: @screen-xs-max) {
+        font-size: 85%;
+    }
 }
 
 .doc-entry .doc-declaration .doc-constraint {
@@ -373,6 +386,7 @@ ol.breadcrumb li.active code {
     border-top-width: 0px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    overflow: hidden;
 }
 
 span.doc-crossref {
@@ -407,31 +421,6 @@ span.doc-crossref:hover {
     text-decoration: underline;
 }
 
-i.doc-toggle {
-    font-size: 140%;
-    color: #aaa;
-    position: absolute;
-    left: 7px;
-    top: 7px;
-
-    // -webkit-transition-duration: 0.3s;
-    // -moz-transition-duration: 0.3s;
-    // -o-transition-duration: 0.3s;
-    // transition-duration: 0.3s;
-
-    // -webkit-transition-property: -webkit-transform;
-    // -moz-transition-property: -moz-transform;
-    // -o-transition-property: -o-transform;
-    // transition-property: transform;
-
-    // overflow:hidden;
-}
-
-i.doc-toggle:hover {
-    color: @d-red;
-
-}
-
 .doc-entry pre.d_code {
     background-color: #fff;
     font-size: @font-size-base - 2px;
@@ -439,7 +428,7 @@ i.doc-toggle:hover {
 
 .doc-entry .doc-detail {
     border-top: 1px solid #eee;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .doc-top-header {
@@ -466,3 +455,19 @@ i.doc-toggle:hover {
 dl.doc-parameters dt {
     font-weight: 500;
 }
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  -webkit-transition: height 0.25s ease 1s linear;
+  -moz-transition: height 0.25s ease 1s linear;
+  -o-transition: height 0.25s ease 1s linear;
+  -ms-transition: height 0.25s ease 1s linear;
+  transition: height 0.25s ease 1s linear;
+  -webkit-transition: height 0.25s ease;
+  transition: height 0.25s ease;
+  -webkit-backface-visibility: hidden;
+}
+

@@ -76,12 +76,10 @@
     </nav>
 
     <ol class="breadcrumb">
-        <li><a href="#">Documentation</a>
-        </li>
-        <li><a href="#">Standard Library</a>
-        </li>
-        <li class="active"><code>std.array</code>
-        </li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Standard Library</a></li>
+        <li><a href="#"><code>std</code></a></li>
+        <li class="active"><code>array</code></li>
     </ol>
 
     <div id="ForeachType" class="well doc-popup">
@@ -185,11 +183,12 @@
             <h4><code><a href="#">std.array</a></code></h4>
         </div>
         <div class="doc-entry">
-            <div class="doc-declaration">
+            <div class="doc-declaration" data-toggle="collapse" data-target=".array-1" aria-expanded="false" aria-controls="array-1">
                 <div class="doc-signature">
-                    <a data-toggle="collapse" data-target=".array-1" aria-expanded="false" aria-controls="array-1"><i class="fa fa-caret-right doc-toggle"></i></a>
                     <span data-target="#ForeachType" class="doc-crossref">ForeachType</span>!Range[] <span class="doc-name">array</span>(Range)(Range <span class="doc-variable">r</span>)
-                    <div class="doc-toolbar"><a href="#"><i class="fa fa fa-link"></i></a></div>
+                    <div class="doc-toolbar">
+                        <i class="fa fa fa-angle-double-down doc-collapse"></i>
+                    </div>
                 </div>
                 <div class="collapse array-1 doc-collapse">
                     <div class="doc-constraint">
@@ -198,7 +197,10 @@
                 </div>
             </div>
             <div class="doc-summary">
-                Returns a copy of the input range in a newly allocated dynamic array.
+                Create a new dynamic array containing a copy of the input range.
+                <div class="doc-toolbar">
+                    <a href="#array-1"><i class="fa fa fa-link"></i></a>
+                </div>
                 <div class="collapse array-1 doc-collapse">
                     <div class="doc-detail">
                         <h4>Parameters</h4>
@@ -208,20 +210,21 @@
                         </dl>
                         Note: narrow strings are handled as a special case in an overload.
                         <h4>Examples</h4>
-                        <pre class="d_code notranslate"><span class="d_keyword">auto</span> a = <span class="d_psymbol">array</span>([1, 2, 3, 4, 5][]);
-    <span class="d_keyword">assert</span>(a == [ 1, 2, 3, 4, 5 ]);
-    </pre>
+<pre class="d_code notranslate"><span class="d_keyword">auto</span> a = <span class="d_psymbol">array</span>([1, 2, 3, 4, 5][]);
+<span class="d_keyword">assert</span>(a == [ 1, 2, 3, 4, 5 ]);
+</pre>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="doc-entry">
-            <div class="doc-declaration">
+            <div class="doc-declaration" data-toggle="collapse" data-target=".array-2" aria-expanded="false" aria-controls="array-2">
                 <div class="doc-signature">
-                    <a data-toggle="collapse" data-target=".array-2" aria-expanded="false" aria-controls="array-2"><i class="fa fa-caret-right doc-toggle"></i></a>
                     <span class="doc-crossref" data-target="#ElementType">ElementType</span>!String[] <span class="doc-name">array</span>(String)(String <span class="doc-variable">str</span>)
-                    <div class="doc-toolbar"><a href="#"><i class="fa fa fa-link"></i></a></div>
+                    <div class="doc-toolbar">
+                        <i class="fa fa fa-angle-double-down doc-collapse"></i>
+                    </div>
                 </div>
                 <div class="collapse array-2 doc-collapse">
                     <div class="doc-constraint">
@@ -231,6 +234,9 @@
             </div>
             <div class="doc-summary">
                 Convert a narrow string to an array type that fully supports random access.
+                <div class="doc-toolbar">
+                    <a href="#array-1"><i class="fa fa fa-link"></i></a>
+                </div>
                 <div class="collapse array-2 doc-collapse">
                     <div class="doc-detail">
                         This is handled as a special case and always returns a <code>dchar[]</code>, <code>const(dchar)[]</code>, or <code>immutable(dchar)[]</code> depending on the constness of the input.
@@ -240,11 +246,12 @@
         </div>
 
         <div class="doc-entry">
-            <div class="doc-declaration">
+            <div class="doc-declaration" data-toggle="collapse" data-target=".assocArray" aria-expanded="false" aria-controls="assocArray">
                 <div class="doc-signature">
-                    <a data-toggle="collapse" data-target=".assocArray" aria-expanded="false" aria-controls="assocArray"><i class="fa fa-caret-right doc-toggle"></i></a>
                     auto <span class="doc-name">assocArray</span>(Range)(Range <span class="doc-variable">r</span>)
-                    <div class="doc-toolbar"><a href="#"><i class="fa fa fa-link"></i></a></div>
+                    <div class="doc-toolbar">
+                        <i class="fa fa fa-angle-double-down doc-collapse"></i>
+                    </div>
                 </div>
                 <div class="collapse assocArray doc-collapse">
                     <div class="doc-constraint">
@@ -253,7 +260,10 @@
                 </div>
             </div>
             <div class="doc-summary">
-                Returns a newly allocated associative array from a range of key/value tuples.
+                Create a new associative array from a range of key/value tuples.
+                <div class="doc-toolbar">
+                    <a href="#array-1"><i class="fa fa fa-link"></i></a>
+                </div>
                 <div class="collapse assocArray doc-collapse">
                     <div class="doc-detail">
                         <h4>Parameters</h4>
